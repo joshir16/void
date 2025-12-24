@@ -1,0 +1,11 @@
+.monthly_expense {
+  max-width: 35%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  background-color: #292929;
+
+  padding: 2rem;
+}

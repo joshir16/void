@@ -1,0 +1,21 @@
+.total_amount {
+  background: #75c9fa;
+  background: linear-gradient(120deg, #59bdf7 5%, #0077c7 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 3rem;
+  border-radius: 2rem;
+
+  & h2 {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+
+  & p {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+}
