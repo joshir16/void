@@ -1,6 +1,8 @@
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import PageNav from "./components/PageNav";
 import Homepage from "./pages/Homepage";
+import Form from "./components/Form";
+import Transactions from "./components/Transactions";
 
 function App() {
   return (
@@ -8,8 +10,10 @@ function App() {
       <PageNav />
       <main>
         <Routes>
-          <Route index path="/" element={<Homepage />} />
-          <Route path="/addexpense" element={<p>Add</p>} />
+          <Route element={<Homepage />}>
+            <Route path="/" element={<Transactions />} />
+            <Route path="/addexpense" element={<Form />} />
+          </Route>
         </Routes>
       </main>
     </BrowserRouter>
