@@ -17,6 +17,7 @@ function Form() {
     setSelectedCategory(category);
     console.log(category);
   }
+  // crypto.randomUUID(),
 
   return (
     <div className={styles.formContainer}>

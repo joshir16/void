@@ -1,8 +1,6 @@
 import styles from "./ExpenseCategory.module.css";
 
-function ExpenseCategory() {
-  const amountSpent = 35000;
-
+function ExpenseCategory({ totalAmount }) {
   return (
     <>
       <div className={styles.category}>
@@ -10,20 +8,20 @@ function ExpenseCategory() {
         <ExpenseCategoryItem
           emoji={"🍔"}
           categoryName={"Food"}
-          amountSpent={12000}
-          percentage={(12000 / amountSpent) * 100}
+          amountSpent={100}
+          percentage={(100 / totalAmount) * 100}
         />
         <ExpenseCategoryItem
           emoji={"📜"}
           categoryName={"Bills"}
-          amountSpent={17500}
-          percentage={(17500 / amountSpent) * 100}
+          amountSpent={120}
+          percentage={(120 / totalAmount) * 100}
         />
         <ExpenseCategoryItem
           emoji={"💸"}
           categoryName={"Other"}
-          amountSpent={5000}
-          percentage={(5000 / amountSpent) * 100}
+          amountSpent={50}
+          percentage={(50 / totalAmount) * 100}
         />
       </div>
     </>
