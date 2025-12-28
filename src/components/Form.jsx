@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styles from "./Form.module.css";
+import { useContext } from "react";
+import { ExpenseContext } from "../hooks/ExpenseContext";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   { id: "food", label: "Food", icon: "🍔" },
@@ -11,6 +14,12 @@ const categories = [
 
 function Form() {
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [amount, setAmount] = useState("");
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const { addExpense } = useContext(ExpenseContext);
+
+  const navigate = useNavigate();
 
   function handleSelectCategory(category) {
     // console.log(e.target.name);
@@ -19,15 +28,37 @@ function Form() {
   }
   // crypto.randomUUID(),
 
+  function handleFormSubmit(e) {
+    e.preventDefault();
+
+    const expense = {
+      amount: Number(amount),
+      id: crypto.randomUUID(),
+      name: name,
+      category: selectedCategory,
+      date: date,
+    };
+
+    addExpense(expense);
+    navigate(-1);
+  }
+
   return (
     <div className={styles.formContainer}>
       <h2>Add New Expense</h2>
-      <form className={styles.form}>
+      <form onSubmit={(e) => handleFormSubmit(e)} className={styles.form}>
         <div className={styles.formAmount}>
           <label htmlFor="amount">Amount</label>
           <div className={styles.inputbox}>
             <span>&#8377;</span>
-            <input id="amount" type="number" name="amount" placeholder="0" />
+            <input
+              id="amount"
+              type="number"
+              name="amount"
+              placeholder="0"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+            />
           </div>
         </div>
 
@@ -39,6 +70,8 @@ function Form() {
               type="text"
               name="expense"
               placeholder="e.g., Grociers"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
         </div>
@@ -68,12 +101,16 @@ function Form() {
           <div className={styles.inputbox}>
             <input
               type="date"
-              defaultValue={new Date().toISOString().split("T")[0]}
+              // defaultValue={new Date().toISOString().split("T")[0]}
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
             />
           </div>
         </div>
 
-        <button className={styles.saveExpense}>Save Expense</button>
+        <button type="submit" className={styles.saveExpense}>
+          Save Expense
+        </button>
       </form>
     </div>
   );

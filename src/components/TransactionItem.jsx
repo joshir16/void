@@ -17,7 +17,6 @@ function TransactionItem({
   transactionAmount = "",
 }) {
   const date = getFormattedDate(transactionDate);
-  console.log(date);
 
   return (
     <>
